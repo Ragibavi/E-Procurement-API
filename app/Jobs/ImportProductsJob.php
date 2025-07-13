@@ -33,7 +33,8 @@ class ImportProductsJob implements ShouldQueue
         }
 
 
-        $handle = fopen($fullPath, 'r');
+        $handle = @fopen($fullPath, 'r');
+        
         if (!$handle) {
             Log::error("Import failed: Cannot open file.");
             return;
